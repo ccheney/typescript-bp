@@ -1,0 +1,19 @@
+{
+  "bravo-js-configurator": {
+    "title": "3MSEMS.PersonalSafetyDivision",
+    "name": "3msems-personalsafetydivision",
+    "markup": "MarkupHandlebars",
+    "markupFeatures": [],
+    "styles": "StylesSass",
+    "stylesFeatures": [],
+    "scripts": "ScriptsVanilla",
+    "scriptsNamespace": "NRD",
+    "scriptsFeatures": [],
+    "framework": "FrameworkVanilla",
+    "frameworkFeatures": [],
+    "generated": {
+      "version": "3.0.0",
+      "timestamp": "Wed Oct 07 2015 13:52:32 GMT-0500 (CDT)"
+    }
+  }
+}

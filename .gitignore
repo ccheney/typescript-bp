@@ -1,0 +1,16 @@
+.*.swp
+.DS_Store
+._.DS_Store
+.idea/*
+.tmp/
+docs/
+build-reports/
+build-env.js
+node_modules/
+npm-debug.log
+tools/node/
+web/
+src/assets/scripts/*.js
+precompiledJst.js
+.baseDir.ts
+.baseDir.js

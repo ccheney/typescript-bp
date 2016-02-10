@@ -1,0 +1,99 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: 3M PSD
+  description: >
+    API for 3M PSD
+host: petstore-api.herokuapp.com
+basePath: /api
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+paths:
+  /email:
+    post:
+      parameters:
+        - name: email
+          in: body
+          description: Saves the shared list items
+          schema:
+            type: array
+            $ref: '#/definitions/ShareListModel'
+          required: true
+      responses:
+          '200':
+            description: Returns success so the client-side app can delete the data locally
+            schema:
+              $ref: '#/definitions/StatusModel'
+definitions:
+
+  ShareListModel:
+    type: object
+    properties:
+      name:
+          type: string
+      email:
+          type: string
+      companyName:
+          type: string
+      zipCode:
+          type: string
+      shareWith:
+        type: array
+        items:
+          type: string
+      subscribe:
+          type: boolean
+      sendCopy:
+          type: boolean
+      cartList:
+          type: array
+          items:
+              $ref: '#/definitions/ShareListGroupModel'
+
+  ShareListGroupModel:
+    type: object
+    properties:
+      groupName:
+          type: boolean
+      products:
+          type: array
+          items:
+              $ref: '#/definitions/ShareListProductModel'
+
+  ShareListProductModel:
+    type: object
+    properties:
+      sku:
+          type: string
+      catalogId:
+          type: string
+      name:
+          type: string
+      techSheet:
+          type: string
+      brochure:
+          type: string
+      video:
+          type: string
+      cartQuantity:
+          type: integer
+
+  StatusModel:
+    properties:
+      status:
+          type: string
+          x-chance-type: fixed
+          x-type-value: 'success'
+      message:
+          type: string
+      code:
+          type: integer
+          x-chance-type: fixed
+          x-type-value: 200
