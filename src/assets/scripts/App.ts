@@ -21,10 +21,6 @@ import GenericModal from './views/modals/GenericModal';
  ║ This application uses the StructureJS library.                                                ║
  ║ - https://github.com/codeBelt/StructureJS                                                     ║
  ║ - http://codebelt.github.io/StructureJS/docs/                                                 ║
- ║                                                                                               ║
- ║ This application uses TACO to build the Cordova App                                           ║
- ║ http://taco.tools/                                                                            ║
- ║ https://channel9.msdn.com/Blogs/Seth-Juarez/Command-Line-Tools-for-Apache-Cordova-with-Kirupa ║
  ╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
 
  http://lorefnon.me/plain-text-table/

@@ -186,6 +186,7 @@ class BaseModal extends DOMElement {
 
         this.close();
     }
+
 }
 
 export default BaseModal;

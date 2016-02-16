@@ -1,5 +1,5 @@
 /**
- * A constant list of key codes that are used in the application.
+ * A constant list of keyboard codes.
  *
  * @class KeyCode
  * @constructor
@@ -7,20 +7,76 @@
 class KeyCode {
 
     /**
+     * TODO: YUIDoc_comment
      *
-     * @property UP
+     * @property TAB
      * @type {number}
      * @static
      */
-    static UP:number = 38;
+    static TAB = 9;
 
     /**
+     * TODO: YUIDoc_comment
      *
-     * @property DOWN
+     * @property ENTER
      * @type {number}
      * @static
      */
-    static DOWN:number = 40;
+    static ENTER = 13;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property HOME
+     * @type {number}
+     * @static
+     */
+    static HOME = 35;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property END
+     * @type {number}
+     * @static
+     */
+    static END = 36;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property LEFT_ARROW
+     * @type {number}
+     * @static
+     */
+    static LEFT_ARROW = 37;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property UP_ARROW
+     * @type {number}
+     * @static
+     */
+    static UP_ARROW = 38;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property RIGHT_ARROW
+     * @type {number}
+     * @static
+     */
+    static RIGHT_ARROW = 39;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property DOWN_ARROW
+     * @type {number}
+     * @static
+     */
+    static DOWN_ARROW = 40;
 
     /**
      *
@@ -28,15 +84,19 @@ class KeyCode {
      * @type {number}
      * @static
      */
-    static SPACE:number = 32;
+    static SPACE = 32;
 
     /**
+     * TODO: YUIDoc_comment
      *
-     * @property ENTER
+     * @property ESCAPE_KEY
      * @type {number}
      * @static
      */
-    static ENTER:number = 13;
+    static ESCAPE_KEY = 27;
+
+    constructor() {
+    }
 
 }
 

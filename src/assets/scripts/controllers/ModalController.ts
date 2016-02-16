@@ -4,6 +4,7 @@ import DOMElement from '../../vendor/structurejs/ts/display/DOMElement';
 import BaseModal from '../views/modals/BaseModal';
 import GenericModal from '../views/modals/GenericModal';
 import ModalEvent from '../events/ModalEvent';
+import KeyCode from '../constants/KeyCode';
 
 /**
  * A class to manage the modals in the application.
@@ -193,7 +194,7 @@ class ModalController extends EventDispatcher {
      */
     protected _onEscPress(event:JQueryEventObject):void {
         if (this._currentModal != null) {
-            if (event.keyCode === 27 && this._currentModal.forceInteraction === false) {
+            if (event.keyCode === KeyCode.ESCAPE_KEY && this._currentModal.forceInteraction === false) {
                 this.removeModal();
             }
         }
