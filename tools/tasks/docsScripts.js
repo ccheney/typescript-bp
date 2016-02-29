@@ -1,4 +1,4 @@
-/*jshint node:true, laxbreak:true */
+/* eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    paths: '<%= env.DIR_SRC %>',
+                    paths: '<%= env.DIR_SRC %>/assets/scripts',
                     outdir: '<%= env.DIR_DOCS %>',
                     themedir: 'tools/cache/yuidoc-friendly-theme',
                     extension: '.ts',

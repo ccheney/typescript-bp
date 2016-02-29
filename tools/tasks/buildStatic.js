@@ -1,4 +1,4 @@
-/*jshint node:true */
+/* eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -10,6 +10,7 @@ module.exports = function(grunt) {
                     cwd: '<%= env.DIR_SRC %>',
                     src: [
                         'assets/media/**',
+                        'assets/media/**/**',
                         '!assets/vendor/**'
                     ],
                     dest: '<%= env.DIR_DEST %>'
@@ -19,6 +20,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('buildStatic', [
-        'copy:buildStatic',
+        'copy:buildStatic'
     ]);
 };

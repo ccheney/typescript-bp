@@ -1,4 +1,4 @@
-/*jshint node:true, laxbreak:true */
+/* eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -10,12 +10,16 @@ module.exports = function(grunt) {
             buildMarkup: {
                 options: {
                     bustCache: true,
-                    data: '<%= env.DIR_SRC %>/assets/data/**/*.json',
+                    data: {
+                        pkg: '<%= pkg %>',
+                        env: '<%= env %>',
+                        data: '<%= env.DIR_SRC %>/assets/data/*.json'
+                    },
                     helpers: [
                         '<%= env.DIR_NPM %>/handlebars-layouts/index.js'
                     ],
                     partials: [
-                        '<%= env.DIR_SRC %>/**/*.hbs'
+                        '<%= env.DIR_SRC %>/templates/**/*.hbs'
                     ]
                 },
                 files: [{
@@ -28,6 +32,28 @@ module.exports = function(grunt) {
                         '!templates/**',
                         '!assets/vendor/**'
                     ]
+                }]
+            }
+        },
+
+        prettify: {
+            buildMarkup: {
+                options: {
+                    indent: 4,
+                    wrap_line_length: 999999, // jshint ignore:line
+                    indent_inner_html: false, // jshint ignore:line
+                    unformatted: [
+                        'a', 'b', 'code', 'i', 'p',
+                        'pre', 'small', 'span',
+                        'sub', 'sup', 'u', 'textarea',
+                        'strong', 'em'
+                    ]
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_TMP %>',
+                    dest: '<%= env.DIR_TMP %>',
+                    src: ['**/*.html']
                 }]
             }
         },
@@ -61,11 +87,13 @@ module.exports = function(grunt) {
         shouldMinify
             ? [
                 'hb:buildMarkup',
+                'prettify:buildMarkup',
                 'string-replace:buildMarkup',
                 'usemin'
             ]
             : [
                 'hb:buildMarkup',
+                'prettify:buildMarkup',
                 'string-replace:buildMarkup'
             ]
     );

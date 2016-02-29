@@ -1,4 +1,4 @@
-/*jshint node:true, laxbreak:true */
+/* eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -17,14 +17,14 @@ module.exports = function(grunt) {
                     base: '<%= env.DIR_DEST %>',
                     livereload: true,
                     open: shouldOpen ? true : false, // opens a tab in your default browser e.g. grunt launch --open
-                    middleware: function(connect, options, middlewares) {
-                        middlewares.push(mockApi({
-                            swaggerFile: path.join(__dirname, '../swagger.yaml'),
-                            watch: true
-                        }));
-
-                        return middlewares;
-                    }
+                    //middleware: function(connect, options, middlewares) {
+                    //    middlewares.push(mockApi({
+                    //        swaggerFile: path.join(__dirname, '../testApi.yaml'),
+                    //        watch: true
+                    //    }));
+                    //
+                    //    return middlewares;
+                    //}
                 }
             }
         }
