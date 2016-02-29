@@ -1,18 +1,26 @@
 /* eslint-env node */
 'use strict';
 
+
 module.exports = function(grunt) {
     var pkg = require('../../package.json');
+    var shouldMinify = !grunt.option('dev');
 
     grunt.config.merge({
-        // Compiles Handlebars hbs templates into JavaScript (JST)
-        copy: {
+        // Injects version number.
+        'string-replace': {
             precompileJst: {
+                options: {
+                    replacements: [{
+                        pattern: /@@version/g,
+                        replacement: pkg.version
+                    }]
+                },
                 files: [{
                     expand: true,
-                    cwd: '<%= env.DIR_SRC %>',
-                    dest: '<%= env.DIR_TMP %>',
-                    src: ['assets/scripts/precompiledJst.js']
+                    cwd: '<%= env.DIR_SRC %>/templates/precompile/',
+                    dest: '<%= env.DIR_TMP %>/templates/precompile/',
+                    src: ['**/*.hbs']
                 }]
             }
         },
@@ -34,33 +42,35 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '<%= env.DIR_SRC %>/assets/scripts/precompiledJst.js': '<%= env.DIR_TMP %>/templates/precompile/**/*.hbs'
+                    '<%= env.DIR_TMP %>/assets/scripts/precompiledJst.js': '<%= env.DIR_TMP %>/templates/precompile/**/*.hbs'
                 }
             }
         },
 
-        // Injects version number.
-        'string-replace': {
+        // Compiles Handlebars hbs templates into JavaScript (JST)
+        copy: {
             precompileJst: {
-                options: {
-                    replacements: [{
-                        pattern: /@@version/g,
-                        replacement: pkg.version
-                    }]
-                },
                 files: [{
                     expand: true,
-                    cwd: '<%= env.DIR_SRC %>/templates/precompile/',
-                    dest: '<%= env.DIR_TMP %>/templates/precompile/',
-                    src: ['**/*.hbs']
+                    cwd: '<%= env.DIR_TMP %>/',
+                    dest: '<%= env.DIR_DEST %>/',
+                    src: ['assets/scripts/precompiledJst.js']
                 }]
             }
         }
+
     });
 
-    grunt.registerTask('precompileJst', [
-        'string-replace:precompileJst',
-        'handlebars:precompileJst',
-        'copy:precompileJst'
-    ]);
+    grunt.registerTask('precompileJst',
+        shouldMinify
+            ? [
+            'string-replace:precompileJst',
+            'handlebars:precompileJst'
+        ]
+            : [
+            'string-replace:precompileJst',
+            'handlebars:precompileJst',
+            'copy:precompileJst'
+        ]
+    );
 };
