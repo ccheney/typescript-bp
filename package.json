@@ -57,7 +57,6 @@
     "postcss": "^5.0.10",
     "remapify": "^2.0.3",
     "shelljs": "^0.5.3",
-    "swagger-mock-api": "^1.5.0",
     "time-grunt": "^1.2.2",
     "tsify": "^0.13.2",
     "tslint": "^2.5.1",
