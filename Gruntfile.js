@@ -38,8 +38,7 @@ module.exports = function(grunt) {
                 'tools/node-*',
                 '<%= env.DIR_BOWER %>',
                 '<%= env.DIR_NPM %>'
-            ],
-            buildCordova: ['<%= env.DIR_CORDOVA %>/www' + '**/*']
+            ]
         },
 
         copy: {
@@ -49,8 +48,7 @@ module.exports = function(grunt) {
                     cwd: '<%= env.DIR_SRC %>',
                     dest: '<%= env.DIR_DEST %>',
                     src: [
-                        'assets/data/**/*',
-                        'cordova.js'
+                        'assets/data/**/*'
                     ]
                 }]
             },
@@ -60,14 +58,6 @@ module.exports = function(grunt) {
                     cwd: '<%= env.DIR_DEST %>/assets',
                     dest: '<%= env.DIR_DEST_PUBLIC %>',
                     src: ['**/*']
-                }]
-            },
-            buildCordova: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= env.DIR_DEST %>',
-                    dest: '<%= env.DIR_CORDOVA %>/www',
-                    src: ['**/*', '!*.html', 'index.html']
                 }]
             }
         },
@@ -148,34 +138,10 @@ module.exports = function(grunt) {
         ['lintScripts']
     );
 
-    grunt.registerTask('cordova', 'Build Cordova app and force --prod', function () {
-      grunt.option('dev', false);
-      grunt.task.run('buildCordovaApp');
-    });
-
-    grunt.registerTask('buildCordovaApp', 'TODO:', [
-        'build',
-        'clean:buildCordova',
-        'copy:buildCordova'
-    ]);
-
     grunt.registerTask('launch', 'Runs build, launches http-server, watches for file changes', [
         'build',
         'connectHttp',
         'watch'
-    ]);
-
-    grunt.registerTask('disperse', 'Clear destination directories, run build, copy assets to public dest', function () {
-        grunt.option('dev', false);
-        grunt.task.run('disperseToPublic');
-    });
-
-    grunt.registerTask('disperseToPublic', 'Clear destination directories, run build, copy assets to public dest', [
-        'clean:dest',
-        'clean:publicDest',
-        'build',
-        'buildSvgs',
-        'copy:public'
     ]);
 
     grunt.loadNpmTasks('grunt-contrib-watch');

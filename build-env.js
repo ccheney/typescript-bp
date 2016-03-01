@@ -60,14 +60,6 @@ var Config = {
     DIR_SRC: 'src',
 
     /**
-     * Path to uncompiled source files. No trailing slash.
-     *
-     * @property DIR_SERVER_SRC
-     * @type String
-     */
-    DIR_SERVER_SRC: '../server/SEMS.PsdCatalog/SEMS.PsdCatalog.Web',
-
-    /**
      * Path to temporary directory (for multi-pass compilation). No trailing slash.
      *
      * @property DIR_TMP
@@ -82,27 +74,6 @@ var Config = {
      * @type String
      */
     DIR_DEST: 'web',
-
-    /**
-     * Path to compiled output files. No trailing slash.
-     *
-     * @property DIR_DEST_PUBLIC
-     * @type String
-     * @note post-build event for VS
-        cd $(ProjectDir)..\..\..\_statics
-
-        echo "Running client-side build"
-        build.cmd --prod
-     */
-    DIR_DEST_PUBLIC: '../server/SEMS.PsdCatalog/SEMS.PsdCatalog.Web/assets',
-
-    /**
-     * Path to the Cordova application. No trailing slash.
-     *
-     * @property DIR_CORDOVA
-     * @type String
-     */
-    DIR_CORDOVA: '../cordova',
 
     /**
      * Path to documentation output files. No trailing slash.
@@ -121,7 +92,7 @@ var Config = {
      *
      * @property UNSAFE_MODE
      */
-    UNSAFE_MODE: true
+    UNSAFE_MODE: false
 };
 
 module.exports = Config;
